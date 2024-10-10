@@ -9,4 +9,4 @@ With the port and ip specified, it should send a message to that specific Port a
 
 That's really about it, the rest is for you to experiment with. It's like Dark Souls, you gotta grind and learn to gain victroy over an obstacle. 
 
-* There is also an Iphone for those who are coding with IOS devices. Will work with the python code.
+* There is also an Iphone for those who are coding with IOS devices.

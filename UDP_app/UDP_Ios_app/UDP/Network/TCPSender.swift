@@ -11,7 +11,7 @@ import Network
 // SensorListner:
 // Description: Listner and Connector for the PI using
 //   TCP and the specific Port.
-class SensorListener: NSObject, ObservableObject {
+class TCPSender: NSObject, ObservableObject {
     // MARK: - properties
 
     private var piAddress: IPv4Address?
@@ -94,10 +94,13 @@ class SensorListener: NSObject, ObservableObject {
         }
     }
     
-    func send(data: Data) {
+    func send(messageToSend: String) {
         guard state == .ready else { return }
         
-        connection?.send(content: data,
+        // convert the messageToSend from type String to Data
+        let dataToSend = Data(messageToSend.utf8)
+        
+        connection?.send(content: dataToSend,
                          completion: .contentProcessed({ error in
             if let error = error {
                 print(error)

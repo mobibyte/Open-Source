@@ -10,7 +10,7 @@
 
 import SwiftUI
 
-struct BottomTabView: View {
+struct BottomTabBar: View {
 
     var body: some View {
         TabView {
@@ -34,5 +34,5 @@ struct BottomTabView: View {
 }
 
 #Preview {
-    BottomTabView()
+    BottomTabBar()
 }

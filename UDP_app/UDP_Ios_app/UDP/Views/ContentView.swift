@@ -13,20 +13,8 @@ import Network
 // echo -n "Hello UDP-World" | nc -4u -w1 -localhost 1024
 
 struct ContentView: View {
-    @ObservedObject var udpListener = UdpListener()
-    let udpPort = NWEndpoint.Port.init(integerLiteral: 12345)
-
     var body: some View {
-        VStack{
-            Text("UDP Listener App")
-        }
-        
-        VStack{
-            Text("\(udpListener.incoming)")
-                .onAppear {
-                    udpListener.start(port: self.udpPort)
-                }
-        }
+        BottomTabBar()
     }
 }
 

@@ -6,11 +6,23 @@
 //
 
 import SwiftUI
+import Network
 
 struct ListenerView: View {
+    @ObservedObject var udpListener = UdpListener()
+    let udpPort = NWEndpoint.Port.init(integerLiteral: 12345)
+
     var body: some View {
-        Text("ListenerView")
-            .font(.title)
+        VStack{
+            Text("UDP Listener App")
+        }
+        
+        VStack{
+            Text("\(udpListener.incoming)")
+                .onAppear {
+                    udpListener.start(port: self.udpPort)
+                }
+        }
     }
 }
 

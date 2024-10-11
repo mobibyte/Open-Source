@@ -62,6 +62,14 @@ class SensorListener: NSObject, ObservableObject {
             }
         }
     }
+    
+    // retryConnection
+    // Description: Attempts to reconnect to the PI
+    private func retryConnection() {
+        if let piAddress = piAddress, let sensorPort = sensorPort {
+            connect(to: piAddress, with: sensorPort)
+        }
+    }
 
     // updateConnectionState
     // Description: Changes states based
@@ -70,7 +78,12 @@ class SensorListener: NSObject, ObservableObject {
         switch state {
         case .ready:
             if connection != nil {
-                receive(on: connection!)
+                // send data here
+                
+                
+                // receive data here if you'd like
+                    // receive(on: connection!)
+                
                 // Modify the NetworkViewModel on the main thread
                 DispatchQueue.main.async {
                     NetworkViewModel.shared.updateConnectionStatus(isConnected: true)
@@ -80,35 +93,19 @@ class SensorListener: NSObject, ObservableObject {
             retryConnection()
         }
     }
-
-    // retryConnection
-    // Description: Attempts to reconnect to the PI
-    private func retryConnection() {
-        if let piAddress = piAddress, let sensorPort = sensorPort {
-            connect(to: piAddress, with: sensorPort)
-        }
-    }
-
-    // cleanupConnection
-    // Description: removes the current state and
-    //   cancels any connections that are currently happening,
-    //   and turns the connection to nil
-    func cleanupConnection() {
-        if NetworkViewModel.shared.getConnectionStatus() {
-            if let connection = connection {
-                // Modify the NetworkViewModel on the main thread
-                DispatchQueue.main.async {
-                    NetworkViewModel.shared.updateConnectionStatus(isConnected: false)
-                }
-                connection.stateUpdateHandler = nil
-
-                connection.cancel()
-                self.connection = nil
+    
+    func send(data: Data) {
+        guard state == .ready else { return }
+        
+        connection?.send(content: data,
+                         completion: .contentProcessed({ error in
+            if let error = error {
+                print(error)
             }
-        }
+        }))
     }
 
-    // recieve
+    // receive
     // input: connection: NWConnection
     // output: void
     // description: Recieving data from the PI,
@@ -139,6 +136,25 @@ class SensorListener: NSObject, ObservableObject {
                 self.longerThanThreshold += 1
             }
             self.receive(on: connection)
+        }
+    }
+    
+    // cleanupConnection
+    // Description: removes the current state and
+    //   cancels any connections that are currently happening,
+    //   and turns the connection to nil
+    func cleanupConnection() {
+        if NetworkViewModel.shared.getConnectionStatus() {
+            if let connection = connection {
+                // Modify the NetworkViewModel on the main thread
+                DispatchQueue.main.async {
+                    NetworkViewModel.shared.updateConnectionStatus(isConnected: false)
+                }
+                connection.stateUpdateHandler = nil
+
+                connection.cancel()
+                self.connection = nil
+            }
         }
     }
 }

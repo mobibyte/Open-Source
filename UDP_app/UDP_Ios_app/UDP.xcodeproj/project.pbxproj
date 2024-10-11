@@ -10,6 +10,10 @@
 		9D346AFF2CB9AEB100CB366D /* SensorListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D346AFE2CB9AEB100CB366D /* SensorListener.swift */; };
 		9D346B022CB9AFBE00CB366D /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D346B012CB9AFBE00CB366D /* NetworkModel.swift */; };
 		9D346B042CB9AFE900CB366D /* NetworkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D346B032CB9AFE900CB366D /* NetworkViewModel.swift */; };
+		9D346B072CB9B0E200CB366D /* BottomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D346B062CB9B0E200CB366D /* BottomTabBar.swift */; };
+		9D346B0F2CB9B1A400CB366D /* ListenerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D346B0E2CB9B1A400CB366D /* ListenerView.swift */; };
+		9D346B112CB9B1AF00CB366D /* SenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D346B102CB9B1AF00CB366D /* SenderView.swift */; };
+		9D346B132CB9B1C700CB366D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D346B122CB9B1C700CB366D /* SettingsView.swift */; };
 		F126B70D2B98F078000B48A2 /* UDPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F126B70C2B98F078000B48A2 /* UDPApp.swift */; };
 		F126B70F2B98F078000B48A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F126B70E2B98F078000B48A2 /* ContentView.swift */; };
 		F126B7112B98F07A000B48A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F126B7102B98F07A000B48A2 /* Assets.xcassets */; };
@@ -43,6 +47,10 @@
 		9D346AFE2CB9AEB100CB366D /* SensorListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorListener.swift; sourceTree = "<group>"; };
 		9D346B012CB9AFBE00CB366D /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		9D346B032CB9AFE900CB366D /* NetworkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewModel.swift; sourceTree = "<group>"; };
+		9D346B062CB9B0E200CB366D /* BottomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabBar.swift; sourceTree = "<group>"; };
+		9D346B0E2CB9B1A400CB366D /* ListenerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerView.swift; sourceTree = "<group>"; };
+		9D346B102CB9B1AF00CB366D /* SenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderView.swift; sourceTree = "<group>"; };
+		9D346B122CB9B1C700CB366D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F126B7092B98F078000B48A2 /* UDP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UDP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F126B70C2B98F078000B48A2 /* UDPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDPApp.swift; sourceTree = "<group>"; };
 		F126B70E2B98F078000B48A2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,11 +94,24 @@
 		9D346B002CB9AF2000CB366D /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F1E7E6402B9F7E6B002DCE1C /* Simple.swift */,
 				9D346AFE2CB9AEB100CB366D /* SensorListener.swift */,
 				9D346B012CB9AFBE00CB366D /* NetworkModel.swift */,
 				9D346B032CB9AFE900CB366D /* NetworkViewModel.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		9D346B052CB9B02700CB366D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F126B70E2B98F078000B48A2 /* ContentView.swift */,
+				9D346B062CB9B0E200CB366D /* BottomTabBar.swift */,
+				9D346B0E2CB9B1A400CB366D /* ListenerView.swift */,
+				9D346B102CB9B1AF00CB366D /* SenderView.swift */,
+				9D346B122CB9B1C700CB366D /* SettingsView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F126B7002B98F078000B48A2 = {
@@ -117,13 +138,12 @@
 			isa = PBXGroup;
 			children = (
 				F126B70C2B98F078000B48A2 /* UDPApp.swift */,
-				F126B70E2B98F078000B48A2 /* ContentView.swift */,
 				F126B7102B98F07A000B48A2 /* Assets.xcassets */,
 				F126B7122B98F07A000B48A2 /* Preview Content */,
 				F126B7362B98F664000B48A2 /* Experiment.swift */,
 				F1F0F97B2BA364BE000287DA /* UDPListener.swift */,
+				9D346B052CB9B02700CB366D /* Views */,
 				9D346B002CB9AF2000CB366D /* Network */,
-				F1E7E6402B9F7E6B002DCE1C /* Simple.swift */,
 			);
 			path = UDP;
 			sourceTree = "<group>";
@@ -283,13 +303,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D346B0F2CB9B1A400CB366D /* ListenerView.swift in Sources */,
 				F1F0F97C2BA364BE000287DA /* UDPListener.swift in Sources */,
 				F126B7372B98F664000B48A2 /* Experiment.swift in Sources */,
 				F1E7E6412B9F7E6B002DCE1C /* Simple.swift in Sources */,
+				9D346B072CB9B0E200CB366D /* BottomTabBar.swift in Sources */,
 				F126B70F2B98F078000B48A2 /* ContentView.swift in Sources */,
 				F126B70D2B98F078000B48A2 /* UDPApp.swift in Sources */,
 				9D346B022CB9AFBE00CB366D /* NetworkModel.swift in Sources */,
 				9D346AFF2CB9AEB100CB366D /* SensorListener.swift in Sources */,
+				9D346B132CB9B1C700CB366D /* SettingsView.swift in Sources */,
+				9D346B112CB9B1AF00CB366D /* SenderView.swift in Sources */,
 				9D346B042CB9AFE900CB366D /* NetworkViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

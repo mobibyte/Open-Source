@@ -19,19 +19,17 @@ struct SenderView: View {
     var messageToSend : String = "Hello Preston"
     
     var body: some View {
-        Text("SenderView")
-            .font(.title)
+        VStack{
+            Text("SenderView")
+                .font(.title)
         
-        padding()
-        Button("Connect") {
-            tcpSender.connect(to: piAddress, with: sensorPort)
+            Button("Connect") {
+                tcpSender.connect(to: piAddress, with: sensorPort)
+            }
+            Button("Send Message") {
+                tcpSender.send(messageToSend: messageToSend)
+            }
         }
-        padding()
-        Button("Send Message") {
-            tcpSender.send(messageToSend: messageToSend)
-        }
-        
-        
     }
 }
 

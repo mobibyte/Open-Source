@@ -14,14 +14,16 @@ struct ListenerView: View {
 
     var body: some View {
         VStack{
-            Text("UDP Listener App")
-        }
-        
-        VStack{
-            Text("\(udpListener.incoming)")
-                .onAppear {
-                    udpListener.start(port: self.udpPort)
-                }
+            VStack{
+                Text("UDP Listener App")
+            }
+            
+            VStack{
+                Text("\(udpListener.incoming)")
+                    .onAppear {
+                        udpListener.start(port: self.udpPort)
+                    }
+            }
         }
     }
 }
